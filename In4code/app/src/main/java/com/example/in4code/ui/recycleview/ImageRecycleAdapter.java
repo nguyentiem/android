@@ -6,10 +6,8 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,7 +42,7 @@ public class ImageRecycleAdapter extends RecyclerView.Adapter <ImageRecycleAdapt
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        ItemImageViewBinding itemImageViewBinding = DataBindingUtil.inflate(inflater,R.layout.item_image_view,parent,false);
+        ItemImageViewBinding itemImageViewBinding = DataBindingUtil.inflate(inflater, R.layout.item_image_view,parent,false);
         ImageViewHolder imageViewHolder =new ImageViewHolder(itemImageViewBinding);
         return imageViewHolder;
     }

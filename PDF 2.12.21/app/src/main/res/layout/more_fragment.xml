@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+         android:background="#FFFFFF"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:id="@+id/filemanage"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+
+                android:layout_gravity="center"
+             />
+
+            <TextView
+                android:layout_width="243dp"
+                android:layout_height="match_parent"
+
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:text="File Management"
+                android:textSize="15dp"></TextView>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+
+                android:src="@drawable/right"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/removeads"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/filemanage"
+            app:layout_constraintStart_toStartOf="@+id/filemanage"
+            app:layout_constraintTop_toBottomOf="@+id/filemanage">
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_width="243dp"
+                android:layout_height="match_parent"
+
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:text="Remove Ads"
+                android:textSize="15dp"></TextView>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+
+                android:src="@drawable/right"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/feedback"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/removeads"
+            app:layout_constraintTop_toBottomOf="@+id/removeads">
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+
+                android:layout_gravity="center"
+
+                />
+
+            <TextView
+                android:layout_width="243dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+
+                android:gravity="center_vertical"
+                android:text="FeedBack"
+                android:textSize="15dp"></TextView>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+
+                android:src="@drawable/right"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/shareapp"
+            android:layout_width="300dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="50dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/feedback"
+            app:layout_constraintStart_toStartOf="@+id/feedback"
+            app:layout_constraintTop_toBottomOf="@+id/feedback">
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_width="244dp"
+                android:layout_height="match_parent"
+
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+                android:text="Share App"
+                android:textSize="15dp"></TextView>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+
+                android:src="@drawable/right"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rateus"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/shareapp"
+            app:layout_constraintStart_toStartOf="@+id/shareapp"
+            app:layout_constraintTop_toBottomOf="@+id/shareapp">
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_width="244dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center_vertical"
+
+                android:text="Rate Us"
+                android:textSize="15dp"></TextView>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+
+                android:src="@drawable/right"
+                android:layout_gravity="center" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

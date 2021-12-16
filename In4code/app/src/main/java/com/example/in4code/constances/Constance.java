@@ -1,4 +1,4 @@
-package constances;
+package com.example.in4code.constances;
 
 public class Constance {
     public static final String Dir ="/ImageFiles/";

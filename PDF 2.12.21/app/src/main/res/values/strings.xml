@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">PDF Reader</string>
+
+    <string name="header_error_text" translatable="false">Oops…</string>
+    <string name="error_text">Sorry…</string>
+    <string name="close_text">Close</string>
+    <string name="confirm_text">OK</string>
+    <string name="understood_text">OK! Understood</string>
+    <string name="loading_text">Loading…</string>
+    <string name="loading_file_text">Loading files…</string>
+    <string name="loading_locked_file_text">Finding password protected files…</string>
+    <string name="download_not_success_text">Download not success…</string>
+    <string name="download_success_text">Download success to Download folder</string>
+    <string name="confirm_message">Are you sure?</string>
+    <string name="confirm_cancel_current_action">Are you sure to stop this action? This might interrupt your data sync.\n</string>
+    <string name="confirm_override_file">This file is existed, do you want to override it?\n</string>
+    <string name="yes_text">Yes</string>
+    <string name="no_text">No</string>
+    <string name="warning_text">Warning</string>
+    <string name="success_text">success</string>
+    <string name="please_wait_text">Please wait a moment</string>
+    <string name="please_input_name_text">Please input file name.</string>
+    <string name="exit_text">Exit</string>
+    <string name="downloading_from_gg_drive_text">Loading from cloud server</string>
+    <string name="loading_from_local_text">Loading from local file</string>
+    <string name="not_now_text">Not now</string>
+    <string name="agree_text">Agree</string>
+    <string name="giant_permission_text">Giant permission</string>
+    <string name="guide_text">Select file guide</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="retry_text">Retry</string>
+    <string name="delete_success_text">Delete success…</string>
+    <string name="delete_fail_text">Can not delete now…</string>
+    <string name="loading_ads_text">Loading Ads</string>
+    <string name="thankyou_text">Thank you</string>
+    <string name="system_data_issue_text">Can not complete this action. Please try again.</string>
+    <string name="can_not_connect_to_network_text">Application can not connect to network.</string>
+    <string name="connect_to_network_success_text">Connect to network successful.</string>
+    <string name="function_not_support_text">This function is not supported now.</string>
+    <string name="description_time_just_now">Just now</string>
+    <string name="description_time_minute">minute</string>
+    <string name="description_time_hour">hour</string>
+    <string name="description_time_day">day</string>
+    <string name="description_time_month">month</string>
+    <string name="description_time_year">year</string>
+    <string name="description_time_ago">ago</string>
+    <string name="title_need_permission">Permission Request</string>
+    <string name="title_need_permission_fail">Permission Request Fail</string>
+    <string name="couldnt_get_file_now">Application could not get local file now. Please retry later.\n</string>
+    <string name="reject_read_file">\nYou can accept this permission later.\n</string>
+    <string name="couldnt_create_file_now">Application could not create file now. Please retry later.\n</string>
+    <string name="need_permission_to_get_file">\nPDF Reader needs Manage External Storage permission to view and create files.\n</string>
+    <string name="need_permission_to_create_file">PDF Reader needs Manage External Storage permission to create files.\n</string>
+    <string name="get_file_now">Application will get local file right now.</string>
+    <string name="thank_you_for_support">Thank you for your support.\n</string>
+    <string name="create_file_now">Application will create file right now.</string>
+    <string name="system_data_issue">Data is not valid. Please try again.</string>
+    <string name="share_file_title">Share this file</string>
+    <string name="share_chooser">Select app to send message…</string>
+    <string name="rate_us_title">Rate us</string>
+    <string name="example_password">Password</string>
+    <string name="example_re_enter_password">Retype password</string>
+
+    <string name="no_file_found">No file found!</string>
+    <string name="no_pdf_found">No PDF file found!</string>
+    <string name="no_file_in_folder_found">Empty folder!</string>
+    <string name="can_not_open_folder">Can not open folder now.</string>
+    <string name="can_not_open_file">Can not open file now.</string>
+    <string name="can_not_select_file">Select file not successfully. Please choose file from Local storage or Google drive app only.</string>
+    <string name="can_not_select_file_from_selector">Select file not successfully.</string>
+    <string name="can_not_select_file_from_google_drive">Error while download file from Cloud server.</string>
+    <string name="view_file">View file</string>
+    <string name="guide_to_select_multiple">\n\nLong touch to item to get multiple files.\n\n</string>
+    <string name="loading_from_google_drive">Loading from cloud server. This may take a minute.</string>
+    <string name="confirm_delete_file_title">Delete file</string>
+    <string name="confirm_delete_file_message">Are you sure to delete this file permanently? You can NOT restore it later.\n</string>
+    <string name="accept_permission_file_selector">Accept storage permission</string>
+    <string name="data_not_valid">Sorry. Data is not valid. We can\'t create pdf now.</string>
+    <string name="done_create_pdf_title">Result</string>
+    <string name="file_not_found">File is not exist</string>
+    <string name="sort_not_available">Sort function is NOT available now.</string>
+    <string name="create_file_success">Saved PDF file successfully!</string>
+    <string name="create_txt_success">Saved TXT file successfully!</string>
+    <string name="converting_success_pdf">Converted to PDF file successfully!</string>
+    <string name="set_pass">Set password</string>
+    <string name="add_watermark">Add watermark</string>
+
+    <string name="pdf_type" translatable="false">application/pdf</string>
+    <string name="txt_type" translatable="false">text/*</string>
+    <string name="excel_type" translatable="false">text/*</string>
+    <string name="word_type" translatable="false">text/*</string>
+    <string name="image_type" translatable="false">image/*</string>
+    <string name="prefix_for_google_drive" translatable="false">File_from_cloud_server_</string>
+    <string name="default_notification_channel_id" translatable="false">PDF Reader</string>
+    <string name="word_file" translatable="false">Word</string>
+    <string name="txt_file" translatable="false">Txt</string>
+    <string name="excel_file" translatable="false">Excel</string>
+
+    <!--  navigation  -->
+    <string name="title_navigation_lib">All File</string>
+    <string name="title_navigation_lib_header">All files</string>
+    <string name="title_navigation_bookmark">Bookmark</string>
+    <string name="title_navigation_history">Recent</string>
+    <string name="title_navigation_browser">Browser</string>
+    <string name="title_navigation_news">More</string>
+
+    <!--   home fragment -->
+    <string name="image_to_pdf">Image to PDF</string>
+    <string name="protect_pdf" translatable="false">Protect PDF</string>
+    <string name="unlock_pdf" translatable="false">Unlock PDF</string>
+    <string name="view_pdf" translatable="false">View pdf file</string>
+
+    <!--   lib fragment -->
+    <string name="accept_permission_show_pdf">Discover PDF files</string>
+    <string name="sort_by_date">Sort by Date</string>
+    <string name="sort_by_name">Sort by Name</string>
+    <string name="sort_by_size">Sort by Size (Increase) </string>
+    <string name="sort_by_size_revert">Sort by Size (Decrease) </string>
+    <string name="my_pdf_title">My File</string>
+    <string name="rename_enter_new_name">Rename pdf file</string>
+    <string name="rename_enter_new_name_content">Please enter new name</string>
+    <string name="rename_please_input_password">Please input new name</string>
+    <string name="can_not_edit_video_name">Can not edit file name.</string>
+    <string name="duplicate_video_name">File name is duplicated</string>
+    <string name="rename_file_success">Rename file success</string>
+
+    <!-- bookmark   -->
+    <string name="bookmark_title">Bookmark</string>
+    <string name="bookmark_save_success">Save bookmark file successfully</string>
+    <string name="bookmark_remove_success">Remove bookmark file successfully</string>
+    <string name="recent_remove_success">Remove history file successfully</string>
+
+    <!-- image to pdf-->
+    <string name="generate_pdf">Convert to PDF</string>
+    <string name="image_to_pdf_nothing_to_clear">Please select file first.</string>
+
+    <!-- edit image-->
+    <string name="creating_pdf">Creating pdf…</string>
+    <string name="creating_success_pdf">Create success</string>
+    <string name="creating_fail_pdf">Create fail</string>
+
+    <!-- open PDF file -->
+    <string name="open_file">Select app</string>
+    <string name="open_file_error">No app to read this File</string>
+
+    <!--  protect pdf  -->
+    <string name="protect_pdf_title" translatable="false">Protect pdf</string>
+    <string name="protect_pdf_select_file" translatable="false">File explorer</string>
+    <string name="protect_pdf_select_other_file" translatable="false">Select other pdf</string>
+    <string name="protect_pdf_start_set_password" translatable="false">Start set password</string>
+    <string name="protect_pdf_select_file_title" translatable="false">"Select a File"</string>
+    <string name="protect_pdf_please_enter_password">Please enter your password</string>
+    <string name="protect_pdf_please_reenter_password">Please enter your confirm password</string>
+    <string name="protect_pdf_password_not_match">Your passwords are not matched</string>
+    <string name="protect_pdf_add_password_error">Error occurred while set password. Please re-try again.</string>
+    <string name="protect_pdf_add_password_success">Set password success: </string>
+    <string name="protect_pdf_encrypted_file_name" translatable="false">_set_password.pdf</string>
+    <string name="protect_pdf_file_already_set_password">Selected file is already set password.</string>
+    <string name="protect_pdf_file_is_encrypted_before">Selected file is set password before.</string>
+
+    <!--  unlock pdf  -->
+    <string name="unlock_pdf_title" translatable="false">Unlock pdf</string>
+    <string name="unlock_pdf_select_file" translatable="false">File explorer</string>
+    <string name="unlock_pdf_select_other_file" translatable="false">Select other pdf</string>
+    <string name="unlock_pdf_start_remove_password" translatable="false">Start remove password</string>
+    <string name="unlock_pdf_select_file_title" translatable="false">"Select a File"</string>
+    <string name="unlock_pdf_please_enter_password">Please enter old password</string>
+    <string name="unlock_pdf_enter_wrong_password">Your password is incorrect.</string>
+    <string name="unlock_pdf_add_password_error">Error occurred while remove password. Maybe your password is incorrect.</string>
+    <string name="unlock_pdf_add_password_success">Remove password success: </string>
+    <string name="unlock_pdf_encrypted_file_name" translatable="false">_remove_password.pdf</string>
+    <string name="unlock_pdf_file_not_encrypted_before">Selected file is not set password before.</string>
+
+    <!--  option dialog  -->
+    <string name="option_dialog_file_name">Enter file name</string>
+    <string name="option_dialog_password">Enter password</string>
+
+    <!--  EDIT / CROP  -->
+    <string name="crop_image_title">Crop image</string>
+
+    <!--  view pdf  -->
+    <string name="view_pdf_file_empty">Error! Selected file is empty. Please choose other file</string>
+    <string name="view_pdf_select_file_title">"Select a File"</string>
+    <string name="view_pdf_nothing_to_clear">No file selected</string>
+    <string name="view_pdf_share">Share file</string>
+    <string name="view_pdf_please_open_file">Please select file first</string>
+    <string name="view_pdf_can_not_open_file">Can not open this file</string>
+    <string name="view_pdf_can_not_open_file_notice">\nSorry. We can not open this file. Please try again later.\n</string>
+    <string name="view_pdf_input_wrong_password">Your password is incorrect.</string>
+    <string name="view_pdf_can_not_print_protected_file">Can not print protected file</string>
+    <string name="view_pdf_jump_to_page">Jump to page</string>
+    <string name="view_pdf_jump_to_page_hint">Please enter page you want to jump to</string>
+    <string name="view_pdf_jump_to_page_number">Page number:</string>
+    <string name="view_pdf_jump_to_page_error">Not valid page number</string>
+    <string name="view_pdf_share_in_range">Share as image</string>
+    <string name="view_pdf_share_in_range_hint">Select page range to share</string>
+    <string name="view_pdf_share_from_page">From page</string>
+    <string name="view_pdf_share_to_page">To page</string>
+    <string name="view_pdf_share_page_error">Not valid page number</string>
+
+    <!-- rate us  -->
+    <string name="thank_you_for_rate_us">Thank you for your opinion about our application.</string>
+    <string name="rate_before">You have already rated this application before.</string>
+
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+    <string name="menu_drawer_theme">Theme color</string>
+    <string name="menu_drawer_language">Language</string>
+    <string name="menu_drawer_rate_us">Rate us</string>
+    <string name="menu_drawer_pro_version">Remove Ads</string>
+    <string name="menu_drawer_feedback">Feedback</string>
+    <string name="menu_drawer_share_app">Share App</string>
+    <string name="menu_drawer_more_app">More app</string>
+    <string name="menu_drawer_privacy">Privacy Policy</string>
+    <string name="menu_drawer_select_theme">Choose color</string>
+
+    <string name="all_pdf_search_hint">Search for file</string>
+
+    <string name="import_file">Import</string>
+    <string name="import_file_name">File name</string>
+    <string name="import_page_size">Page size</string>
+    <string name="import_page_number">Page number</string>
+    <string name="import_button_convert">Convert</string>
+
+    <string name="select_convert_to_pdf">Convert to PDF</string>
+    <string name="crop">Crop</string>
+    <string name="crop_reset">Reset</string>
+    <string name="crop_done">Done</string>
+
+    <string name="sort">Sort by</string>
+    <string name="sort_name">Name</string>
+    <string name="sort_file_size">File Size</string>
+    <string name="sort_create_date">Created Date</string>
+    <string name="sort_asc">Ascending</string>
+    <string name="sort_desc">Descending</string>
+    <string name="more_locked_add_bm">Bookmark</string>
+    <string name="more_locked_remove_bm">Remove from Bookmark</string>
+    <string name="more_locked_remove_pass">Remove Password</string>
+    <string name="more_locked_share">Share</string>
+    <string name="more_locked_share_as_image">Share as image</string>
+    <string name="more_locked_rename">Rename</string>
+    <string name="more_locked_delete">Delete</string>
+    <string name="more_set_pass">Set Password</string>
+    <string name="open">Open</string>
+    <string name="share">Share</string>
+    <string name="scale_type">Scale type</string>
+    <string name="scale_type_aspect_ratio">Aspect Ratio</string>
+    <string name="scale_type_stretch_image">Stretch image</string>
+    <string name="page_size">Page size</string>
+    <string name="page_size_a0" translatable="false">A0</string>
+    <string name="page_size_a1" translatable="false">A1</string>
+    <string name="page_size_a2" translatable="false">A2</string>
+    <string name="page_size_a3" translatable="false">A3</string>
+    <string name="page_size_a4" translatable="false">A4</string>
+    <string name="page_size_b0" translatable="false">B0</string>
+    <string name="page_size_b1" translatable="false">B1</string>
+    <string name="page_size_b2" translatable="false">B2</string>
+    <string name="page_size_letter" translatable="false">Letter</string>
+    <string name="page_size_legal" translatable="false">Legal</string>
+    <string name="page_size_tabloid" translatable="false">Tabloid</string>
+    <string name="page_number">Page number</string>
+    <string name="page_number_none">None</string>
+    <string name="page_number_1" translatable="false">Page [number] of [number] </string>
+    <string name="page_number_2" translatable="false">[number] of [number] </string>
+    <string name="page_number_3" translatable="false">[number]</string>
+    <string name="added_to_bm">Added to Bookmark</string>
+    <string name="delete_file">Delete file</string>
+    <string name="delete_file_question">Are you sure you want to delete this file?</string>
+    <string name="enter_pass">Enter password</string>
+    <string name="enter_pass_hint">Enter password to open the PDF</string>
+    <string name="rename_file">Rename file</string>
+    <string name="rename_file_title">File name</string>
+    <string name="rename_file_enter_name">Enter file name</string>
+    <string name="remove_pass">Remove password</string>
+    <string name="remove_pass_hint">Enter old password to unlock the PDF</string>
+    <string name="remove_password_success_pdf">Remove password successfully</string>
+    <string name="remove_password_fail_pdf">Can not remove password. May be your password is wrong.</string>
+    <string name="unlock">Unlock</string>
+    <string name="add_pass">Add password</string>
+    <string name="add_pass_hint">Enter password to lock the PDF</string>
+    <string name="confirm_pass">Confirm password</string>
+    <string name="find_document">Search</string>
+    <string name="add_image">Add image</string>
+    <string name="location_file">Location: </string>
+    <string name="coming_soon">Coming soon</string>
+    <string name="full_detail_file" translatable="false">%s • %s</string>
+    <string name="number_page">Page: %d</string>
+    <string name="number_page_locked">Page: locked</string>
+
+    <!--  pdf to images  -->
+    <string name="pdf_to_image_title">Share image</string>
+    <string name="pdf_to_image_invalid_start_page">Start page is not valid.</string>
+    <string name="pdf_to_image_extract_error">Sorry. We can not extract this file to images.</string>
+    <string name="pdf_to_image_find_error">Sorry. We can not find any image in this file.</string>
+    <string name="pdf_to_image_extract_finish">Extract to images finished…</string>
+    <string name="pdf_to_image_find_finish">Find images finished…</string>
+    <string name="pdf_to_image_on_progress">Please wait…</string>
+    <string name="pdf_to_image_share_all">Share all</string>
+    <string name="pdf_to_image_finish">Finish</string>
+
+    <string name="color">Color</string>
+
+    <string name="english">English</string>
+    <string name="vietnamese">Vietnamese</string>
+    <string name="korean">Korean</string>
+    <string name="japanese">Japanese</string>
+    <string name="french">French</string>
+    <string name="hindi">Hindi</string>
+    <string name="portuguese">Portuguese</string>
+    <string name="indonesia">Indonesia</string>
+    <string name="chinese">Chinese</string>
+
+    <string name="red">Red</string>
+    <string name="blue">Blue</string>
+    <string name="jade">Jade</string>
+    <string name="violet">Violet</string>
+    <string name="orange">Orange</string>
+    <string name="green">Green</string>
+    <string name="yellow">Yellow</string>
+
+    <string name="change_to_night_mode">Changed to night mode</string>
+    <string name="change_to_day_mode">Changed to day mode</string>
+    <string name="change_to_horizontal_mode">Changed to horizontal mode</string>
+    <string name="change_to_vertical_mode">Changed to vertical mode</string>
+    <string name="change_to_unbookmarked">Cleared bookmark file</string>
+    <string name="change_to_bookmarked">Save bookmark file</string>
+    <string name="change_to_full_screen_mode">Press back to exit full screen mode</string>
+
+    <string name="create_pdf_by_format">New PDF</string>
+    <string name="create_pdf_by_image">Create PDF by image</string>
+
+    <!--  new pdf  -->
+    <string name="new_pdf_title">Create new pdf</string>
+    <string name="new_pdf_number_page">Number page</string>
+    <string name="new_pdf_create">Create</string>
+    <string name="new_pdf_blank">Blank</string>
+    <string name="new_pdf_lined">Lined</string>
+    <string name="new_pdf_grid">Grid</string>
+    <string name="new_pdf_graph">Graph</string>
+    <string name="new_pdf_music">Music</string>
+    <string name="new_pdf_dotted">Dotted</string>
+    <string name="new_pdf_iso_dotted">Iso dot</string>
+    <string name="new_pdf_please_input_number_page">Please input number page</string>
+    <string name="new_pdf_please_not_valid_number_page">Number page is not valid</string>
+    <string name="new_pdf_success">Create PDF successfully!</string>
+    <string name="title_navigation_more" translatable="false">More</string>
+    <string name="more_locked_merge" translatable="false">Merge PDF</string>
+    <string name="more_rename" translatable="false">Rename</string>
+    <string name="more_save_drive" translatable="false">Save in Drive</string>
+    <string name="more_print" translatable="false">Print</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

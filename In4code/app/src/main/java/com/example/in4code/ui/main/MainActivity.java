@@ -1,8 +1,11 @@
 package com.example.in4code.ui.main;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Environment;
+import android.provider.Settings;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,9 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.in4code.BuildConfig;
 import com.example.in4code.R;
 import com.example.in4code.databinding.ActivityMainBinding;
 import com.example.in4code.ui.favorite.FavoriteFragment;
@@ -26,7 +29,6 @@ import com.example.in4code.ui.recent.RecentFragment;
 import com.example.in4code.ui.scan.ScanActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,7 +58,17 @@ public class MainActivity extends AppCompatActivity implements MainActivityNavig
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         return mainViewModel;
     }
+public void requestPermission(){
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        if (Environment.isExternalStorageManager()) {
+            //todo when permission is granted
+        } else {
 
+            Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION, Uri.parse("package:" + BuildConfig.APPLICATION_ID));
+            startActivity(intent);
+        }
+    }
+}
 
 
     @Override
@@ -177,7 +189,7 @@ public void animationCreate(){
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initView();
-
+        requestPermission();
     }
 
 

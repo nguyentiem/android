@@ -3,7 +3,6 @@ package com.example.in4code.repos;
 import android.net.Uri;
 
 
-
 public class QR {
  private   String name;
  private Uri imageUri;

@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.ListFragment;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.in4code.ui.favorite.FavoriteFragment;
 import com.example.in4code.ui.home.HomeFragment;

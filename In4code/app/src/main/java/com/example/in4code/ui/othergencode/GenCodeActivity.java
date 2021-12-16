@@ -1,8 +1,11 @@
 package com.example.in4code.ui.othergencode;
+
 import android.os.Bundle;
-import com.example.in4code.databinding.ActivityGenCodeBinding;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.ui.AppBarConfiguration;
+
+import com.example.in4code.databinding.ActivityGenCodeBinding;
 
 
 public class GenCodeActivity extends AppCompatActivity implements GenCodeNavigation{
