@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="App">
+        <attr name="base_color" format="color"/>
+<attr name="iconcolor" format="color"/>
+        <attr name="titlecolor" format="color"/>
+        <attr name="colortool" format="color"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,39 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.In4Code" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="searchViewStyle">@style/searchViewStyle</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="colorPrimary">@color/split_item_bg</item>
+        <item name="colorPrimaryDark">@color/split_item_bg</item>
+        <item name="colorAccent">@color/black_totally</item>
+        <item name="android:statusBarColor">@color/all_pdf_bg_ic_locked</item>
+        <item name="iconcolor">#FC5D5D</item>
+        <item name="titlecolor">#3C1A79</item>
+        <item name="colortool">#EF8D82</item>
+        <item name="base_color">@color/all_pdf_bg_ic_locked</item>
+        <item name="background">@color/white</item>
+    </style>
+
+    <style name="Theme.In4Code.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@android:color/black</item>
+    </style>
+
+    <style name="searchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:textColorHint">@color/black_overlay</item>
+        <item name="android:textColor">@color/black_totally</item>
+        <item name="closeIconVisible">false</item>
+        <item name="closeIconEnabled">false</item>
+        <item name="closeIconSize">0dp</item>
+    </style>
+
+    <style name="Theme.In4Code.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.In4Code.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
