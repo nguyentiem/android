@@ -57,22 +57,12 @@ public class HomeFragment extends Fragment {
         mQRCode = root.findViewById(R.id.img_qr_code);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
             WindowManager manager = (WindowManager) mContext.getSystemService(mContext.WINDOW_SERVICE);
-
-
-            // initializing a variable for default display.
             Display display = manager.getDefaultDisplay();
-
-            // creating a variable for point which
-            // is to be displayed in QR Code.
             Point point = new Point();
             display.getSize(point);
-
-            // getting width and
-            // height of a point
             int width = point.x;
             int height = point.y;
 
-            // generating dimension from width and height.
             int dimen = width < height ? width : height;
             dimen = dimen * 3 / 4;
             qrgEncoder = new QRGEncoder(homeViewModel.getText().getValue(), null, QRGContents.Type.TEXT, dimen);

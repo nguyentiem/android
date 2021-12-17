@@ -1,14 +1,18 @@
 package com.example.in4code.ui.camera;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.hardware.Camera;
 import android.media.Image;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.AndroidException;
 import android.util.Log;
 import android.util.Size;
 import android.view.LayoutInflater;
@@ -29,11 +33,17 @@ import androidx.camera.view.PreviewView;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.example.in4code.R;
 import com.example.in4code.databinding.LayoutCameraScanningBinding;
+import com.example.in4code.repos.result.FailureResult;
+import com.example.in4code.repos.result.Result;
+import com.example.in4code.repos.result.SucessResult;
+import com.example.in4code.ui.scan.ScanActivity;
 import com.example.in4code.ui.scan.ScanActivityNavigation;
 import com.example.in4code.ui.scan.ScanActivityViewModel;
 import com.example.in4code.utils.file.FileUtils;
@@ -53,50 +63,61 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.ObservableSource;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class ScanCameraFragment extends Fragment implements CameraFragmentNavigation {
-
+    //// resize anh
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
     private ProcessCameraProvider cameraProvider;
+    private InputImage inputImage;
     private PreviewView previewView;
-
+    private Preview preview;
     private ImageCapture imageCapture;
-
     private BarcodeScannerOptions options;
     private ExecutorService cameraExecutor;
     private BarcodeScanner scanner;
-    private LayoutCameraScanningBinding binding;
     private Context mContext;
     private ImageAnalysis analysisUseCase;
-    private ScanActivityViewModel viewModel;
+    private CameraSelector cameraSelector;
+    private LayoutCameraScanningBinding binding;
+    private ScanCameraFragmentViewModel viewModel;
     private ScanActivityNavigation listener;
-    public ScanCameraFragment(Context context,ScanActivityNavigation mlisten) {
+    private View root;
+    private static final int MY_CAMERA_REQUEST_CODE = 100;
+
+    public ScanCameraFragment(Context context, ScanActivityNavigation mlisten) {
         this.mContext = context;
         this.listener = mlisten;
     }
 
-    public ScanActivityViewModel getViewModel() {
-        viewModel = new ViewModelProvider((ViewModelStoreOwner) mContext).get(ScanActivityViewModel.class);
+    public ScanCameraFragmentViewModel getViewModel() {
+        viewModel = new ViewModelProvider((ViewModelStoreOwner) mContext).get(ScanCameraFragmentViewModel.class);
         return viewModel;
+    }
+
+    public void initView() {
+
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = LayoutCameraScanningBinding.inflate(inflater, container, false);
-        View root = binding.getRoot();
-        getViewModel();
-        previewView =root.findViewById(R.id.preview);
-        cameraProviderFuture = ProcessCameraProvider.getInstance(mContext);
-        startCamera();
-        return root;
-    }
+        root = binding.getRoot();
+        setupCamera();
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+        return root;
     }
 
     public InputImage getImageFromUri(Uri uri) {
@@ -109,73 +130,105 @@ public class ScanCameraFragment extends Fragment implements CameraFragmentNaviga
         return image;
     }
 
-    public void startCamera() {
-        cameraProviderFuture = ProcessCameraProvider.getInstance(mContext);
-        cameraExecutor = Executors.newSingleThreadExecutor();
-        cameraProviderFuture.addListener(() -> {
-            try {
-                cameraProvider = cameraProviderFuture.get();
-                bindImageAnalisis(cameraExecutor);
-            } catch (ExecutionException | InterruptedException e) {
-                e.printStackTrace();
-            }
-        }, ContextCompat.getMainExecutor(mContext));
-
-    }
-
-    public void bindImageAnalisis(ExecutorService executor){
-        Preview preview = new Preview.Builder().setTargetAspectRatio(AspectRatio.RATIO_4_3).
-                setTargetRotation(previewView.getDisplay().getRotation())
-                .build();
-        preview.setSurfaceProvider(previewView.getSurfaceProvider());
-        ImageAnalysis imageAnalysis =
-                new ImageAnalysis.Builder()
-                        .setTargetResolution(new Size(1280, 720))
-                        .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-                        .build();
-        CameraSelector cameraSelector =
-                new CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK)
-                        .build();
-
-        imageAnalysis.setAnalyzer(executor, new ImageAnalysis.Analyzer() {
+    private void setupCamera() {
+        getViewModel();
+        previewView = root.findViewById(R.id.preview);
+        cameraSelector = new CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build();
+        viewModel.getLiveDataCamera().observe(getViewLifecycleOwner(), new Observer<ProcessCameraProvider>() {
             @Override
-            public void analyze(@NonNull ImageProxy imageProxy) {
-                int rotationDegrees = imageProxy.getImageInfo().getRotationDegrees();
-                @SuppressLint("UnsafeOptInUsageError") Image mediaImage = imageProxy.getImage();
-                if (mediaImage != null) {
-
-                    InputImage image =
-                            InputImage.fromMediaImage(mediaImage, imageProxy.getImageInfo().getRotationDegrees());
-                    scanBarcodes( image);
-                }else{
-                    Toast.makeText(mContext.getApplicationContext(),"image null",Toast.LENGTH_SHORT).show();
+            public void onChanged(ProcessCameraProvider processCameraProvider) {
+                cameraProvider = processCameraProvider;
+                if (ContextCompat.checkSelfPermission(mContext, android.Manifest.permission.CAMERA)
+                        == PackageManager.PERMISSION_DENIED) {
+                    listener.finishScan();
                 }
-                imageProxy.close();
+                bindCameraUseCases();
+
             }
         });
 
+    }
+
+    private void bindCameraUseCases() {
+        bindPreviewUseCase();
+        bindAnalyseUseCase();
+    }
+
+    private void bindPreviewUseCase() {
+        if (cameraProvider == null) {
+            return;
+        }
+        if (preview != null) {
+            cameraProvider.unbind(preview);
+        }
+
+        preview = new Preview.Builder()
+                .setTargetAspectRatio(AspectRatio.RATIO_4_3)
+                .setTargetRotation(previewView.getDisplay().getRotation())
+                .build();
+        preview.setSurfaceProvider(previewView.getSurfaceProvider());
+
         try {
             cameraProvider.unbindAll();
-            cameraProvider.bindToLifecycle((LifecycleOwner) this, cameraSelector, imageAnalysis, preview);
-        } catch (Exception exc) {
-            Log.e("TAG", "Use case binding failed", exc);
+            cameraProvider.bindToLifecycle((LifecycleOwner) this, cameraSelector, preview);
+        } catch (IllegalStateException illegalStateException) {
+            Log.e("TAG", illegalStateException.getMessage());
+        } catch (IllegalArgumentException illegalArgumentException) {
+            Log.e("TAG", illegalArgumentException.getMessage());
         }
     }
 
-    private void scanBarcodes(InputImage image) {
+    Disposable disposable;
 
-        BarcodeScannerOptions options = new BarcodeScannerOptions.Builder()
-                .setBarcodeFormats(Barcode.FORMAT_QR_CODE, Barcode.FORMAT_AZTEC)
+    private void bindAnalyseUseCase() {
+
+        scanner = BarcodeScanning.getClient();
+
+        if (cameraProvider == null) {
+            return;
+        }
+        if (analysisUseCase != null) {
+            cameraProvider.unbind(analysisUseCase);
+        }
+
+        analysisUseCase = new ImageAnalysis.Builder()
+                .setTargetAspectRatio(AspectRatio.RATIO_4_3)
+                .setTargetRotation(previewView.getDisplay().getRotation())
                 .build();
+        cameraExecutor = Executors.newSingleThreadExecutor();
+        analysisUseCase.setAnalyzer(
+                cameraExecutor, new ImageAnalysis.Analyzer() {
+                    @Override
+                    public void analyze(@NonNull ImageProxy imageProxy) {
 
-        BarcodeScanner scanner = BarcodeScanning.getClient();
-        Task<List<Barcode>> result = scanner.process(image)
+                        processImageProxy(imageProxy);
+
+                    }
+                }
+        );
+
+        try {
+            cameraProvider.bindToLifecycle(this, cameraSelector, analysisUseCase);
+        } catch (IllegalStateException illegalStateException) {
+            Log.e("TAG", illegalStateException.getMessage());
+        } catch (IllegalArgumentException illegalArgumentException) {
+            Log.e("TAG", illegalArgumentException.getMessage());
+        }
+    }
+
+    @SuppressLint("UnsafeExperimentalUsageError")
+    private void processImageProxy(ImageProxy imageProxy) {
+
+        @SuppressLint("UnsafeOptInUsageError") InputImage inputImage =
+                InputImage.fromMediaImage(imageProxy.getImage(), imageProxy.getImageInfo().getRotationDegrees());
+
+        scanner.process(inputImage)
                 .addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
                     @Override
-                    public void onSuccess(List<Barcode> barcodes) {
-
-                        for (Barcode barcode : barcodes) {
-                            Rect bounds = barcode.getBoundingBox();
+                    public void onSuccess(@NonNull List<Barcode> barcodes) {
+//                        for (Barcode barcode : barcodes) {
+                        Barcode barcode =barcodes.get(0);
+                        Rect bounds = barcode.getBoundingBox();
                             Point[] corners = barcode.getCornerPoints();
 
                             String rawValue = barcode.getRawValue();
@@ -193,44 +246,31 @@ public class ScanCameraFragment extends Fragment implements CameraFragmentNaviga
                                     String url = barcode.getUrl().getUrl();
                                     break;
                                 case Barcode.TYPE_TEXT:
-                                    Toast.makeText(mContext.getApplicationContext(),barcode.getDisplayValue(),Toast.LENGTH_SHORT).show();
+                                Toast.makeText(mContext.getApplicationContext(),barcode.getDisplayValue(),Toast.LENGTH_SHORT).show();
+
+                                    Log.d("TAG", "onSuccess: " + barcode.getDisplayValue());
                                     listener.finishScan();
                                     break;
                             }
                         }
-
-                    }
+//                    }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.d("TAG", "onFailure: " + e.getMessage());
+                    public void onFailure(@NonNull Exception exception) {
+//                        Toast.makeText(mContext.getApplicationContext(), exception.getMessage(),Toast.LENGTH_SHORT).show();
+                        Log.d("TAG", "onSuccess: " + exception.getMessage());
                     }
                 });
-    }
-    public void takePhoto() {
-        File photoFile = FileUtils.getNewFileName();
-        ImageCapture.OutputFileOptions outputOptions = new ImageCapture.OutputFileOptions.Builder(photoFile).build();
-        imageCapture.takePicture(outputOptions, ContextCompat.getMainExecutor(mContext), new ImageCapture.OnImageSavedCallback() {
-            @Override
-            public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
-                Uri savedUri = Uri.fromFile(photoFile);
-                Log.d("TAG", "Photo capture succeeded: " + savedUri);
-            }
+        imageProxy.close();
 
-            @Override
-            public void onError(@NonNull ImageCaptureException exception) {
-                Log.d("TAG", "cannot take capture: " + exception.getMessage());
-            }
-        });
     }
-    public InputImage getUriImage(Uri uri) {
-        InputImage image = null;
-        try {
-            image = InputImage.fromFilePath(mContext, uri);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return image;
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
+
+
 }

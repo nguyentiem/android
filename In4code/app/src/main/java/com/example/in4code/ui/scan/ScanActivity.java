@@ -45,7 +45,7 @@ public class ScanActivity extends AppCompatActivity implements ScanActivityNavig
         setContentView(binding.getRoot());
         layoutId= binding.scanContent.getId();
         listFrag.add(new ScanCameraFragment(this,this));
-        listFrag.add(new ListImageFragment(this));
+
         getViewModel();
 fragmentManager= getSupportFragmentManager();
         binding.toolbarBackScan.setOnClickListener(new View.OnClickListener() {
