@@ -4,7 +4,8 @@
     package="com.example.in4code">
 
     <uses-feature android:name="android.hardware.camera.any" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -17,20 +18,27 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:requestLegacyExternalStorage="true"
-
-        android:hardwareAccelerated="true"
-        android:theme="@style/Theme.In4Code">
+        android:theme="@style/Theme.In4Code"
+        tools:replace="android:icon">
+        <activity
+            android:name=".ui.qrgallary.GallaryQRCodeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_gallary_qrcode"
+            android:theme="@style/Theme.In4Code.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"/>
+            android:value="@integer/google_play_services_version" />
+
         <activity
             android:name=".ui.othergencode.GenCodeActivity"
             android:exported="true"
@@ -38,8 +46,8 @@
             android:theme="@style/Theme.In4Code.NoActionBar" />
         <activity
             android:name=".ui.scan.ScanActivity"
-            android:exported="true"  android:theme="@style/Theme.In4Code.NoActionBar" />
-
+            android:exported="true"
+           />
         <activity
             android:name=".ui.main.MainActivity"
             android:exported="true"
@@ -58,7 +66,7 @@
                 android:value="@integer/google_play_services_version" />
             <meta-data
                 android:name="com.google.mlkit.vision.DEPENDENCIES"
-                android:value="barcode"/>
+                android:value="barcode" />
         </activity>
     </application>
 

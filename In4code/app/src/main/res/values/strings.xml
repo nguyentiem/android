@@ -28,5 +28,28 @@
     <string name="qr_code">qr_code</string>
     <string name="title_activity_gen_code">GenCodeActivity</string>
     <string name="no_file_found">No Image Found</string>
-
+    <string name="title_activity_gallary_qrcode">GallaryQRCodeActivity</string>
+    <string name="title_need_permission">Permission Request</string>
+    <string name="need_permission_to_create_file">PDF Reader needs Manage External Storage permission to create files.</string>
+    <string name="header_error_text">Oops…</string>
+    <string name="agree_text">Agree</string>
+    <string name="confirm_message">Are you sure?</string>
+    <string name="confirm_cancel_current_action">Are you sure to stop this action? This might interrupt your data sync.\n</string>
+    <string name="confirm_override_file">This file is existed, do you want to override it?\n</string>
+    <string name="yes_text">Yes</string>
+    <string name="no_text">No</string>
+    <string name="title_need_permission_fail">Permission Request Fail</string>
+    <string name="not_now_text">later</string>
+    <string name="please_wait_text">Please wait</string>
+    <string name="error_text">Sorry…</string>
+    <string name="close_text">Close</string>
+    <string name="confirm_text">OK</string>
+    <string name="understood_text">OK! Understood</string>
+    <string name="exit_text">Exit</string>
+    <string name="guide_text">Select file guide</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="retry_text">Retry</string>
+    <string name="couldnt_create_file_now">Application could not create file now. Please retry later.\n</string>
+    <string name="thankyou_text">Thank you</string>
+    <string name="create_file_now">Application will create file right now.</string>
 </resources>

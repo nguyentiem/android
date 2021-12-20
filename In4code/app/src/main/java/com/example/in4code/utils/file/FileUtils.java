@@ -1,20 +1,14 @@
 package com.example.in4code.utils.file;
 
-import static android.os.ParcelFileDescriptor.MODE_READ_ONLY;
-
-import android.content.Context;
-import android.graphics.pdf.PdfRenderer;
 import android.net.Uri;
 import android.os.Environment;
-import android.os.ParcelFileDescriptor;
 import android.util.Log;
 
 import com.example.in4code.constances.Constance;
-import com.example.in4code.repos.ImageQR;
+import com.example.in4code.repos.image.ImageQR;
 import com.example.in4code.utils.date.DateTimeUtlis;
 
 import java.io.File;
-import java.util.ArrayList;
 
 public class FileUtils {
     public enum FileType {

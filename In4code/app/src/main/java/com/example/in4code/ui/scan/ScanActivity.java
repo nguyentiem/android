@@ -1,9 +1,14 @@
 package com.example.in4code.ui.scan;
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
@@ -11,12 +16,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
+
+import com.example.in4code.R;
 import com.example.in4code.databinding.ActivityScanBinding;
-import com.example.in4code.ui.camera.ScanCameraFragment;
-import com.example.in4code.ui.listimage.ListImageFragment;
+import com.example.in4code.ui.scan.camera.ScanCameraFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class ScanActivity extends AppCompatActivity implements ScanActivityNavigation {
 
@@ -47,7 +55,7 @@ public class ScanActivity extends AppCompatActivity implements ScanActivityNavig
         listFrag.add(new ScanCameraFragment(this,this));
 
         getViewModel();
-fragmentManager= getSupportFragmentManager();
+    fragmentManager= getSupportFragmentManager();
         binding.toolbarBackScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,8 +97,6 @@ fragmentManager= getSupportFragmentManager();
 
     }
 
-
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -108,6 +114,7 @@ fragmentManager= getSupportFragmentManager();
 
     @Override
     public void finishScan() {
+//        onBackPressed();
         finish();
     }
 }
