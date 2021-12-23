@@ -62,7 +62,7 @@
                     android:id="@+id/profile"
                     android:backgroundTint="?background"
                     android:layout_marginEnd="25dp"
-                    android:src="@drawable/convert"
+                    android:src="@drawable/ic_menu_gallery"
                     />
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>

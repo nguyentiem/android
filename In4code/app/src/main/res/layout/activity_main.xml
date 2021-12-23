@@ -22,7 +22,6 @@
         android:layout_height="match_parent"
         android:background="?colorPrimary"
         android:layout_gravity="start"
-
         android:focusable="true"
         android:clickable="true"
         app:headerLayout="@layout/nav_header_main"

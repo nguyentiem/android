@@ -31,8 +31,10 @@ import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.example.in4code.R;
 import com.example.in4code.databinding.LayoutCameraScanningBinding;
+import com.example.in4code.ui.component.ResultScanQRDialog;
 import com.example.in4code.ui.scan.ScanActivity;
 import com.example.in4code.ui.scan.ScanActivityNavigation;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -71,6 +73,7 @@ public class ScanCameraFragment extends Fragment implements CameraFragmentNaviga
     private ScanCameraFragmentViewModel viewModel;
     private ScanActivityNavigation listener;
     private View root;
+    private CameraFragmentNavigation listen2;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
 
     public ScanCameraFragment(Context context, ScanActivityNavigation mlisten) {
@@ -92,6 +95,7 @@ public class ScanCameraFragment extends Fragment implements CameraFragmentNaviga
 
         binding = LayoutCameraScanningBinding.inflate(inflater, container, false);
         root = binding.getRoot();
+        listen2 =this;
         setupCamera();
 
         return root;
@@ -194,52 +198,30 @@ public class ScanCameraFragment extends Fragment implements CameraFragmentNaviga
                 .addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
                     @Override
                     public void onSuccess(@NonNull List<Barcode> barcodes) {
-                        for (Barcode barcode : barcodes) {
-//                        Barcode barcode =barcodes.get(0);
-                        Rect bounds = barcode.getBoundingBox();
-                            Point[] corners = barcode.getCornerPoints();
 
-                            String rawValue = barcode.getRawValue();
+                        if(barcodes!=null&&barcodes.size()>0){
 
-                            int valueType = barcode.getValueType();
-                            // See API reference for complete list of supported types
-                            switch (valueType) {
-                                case Barcode.TYPE_WIFI:
-                                    String ssid = barcode.getWifi().getSsid();
-                                    String password = barcode.getWifi().getPassword();
-                                    int type = barcode.getWifi().getEncryptionType();
-                                    break;
-                                case Barcode.TYPE_URL:
-                                    String title = barcode.getUrl().getTitle();
-                                    String url = barcode.getUrl().getUrl();
-                                    break;
-                                case Barcode.TYPE_TEXT:
-                                Toast.makeText(mContext.getApplicationContext(),barcode.getDisplayValue(),Toast.LENGTH_SHORT).show();
+                            new ResultScanQRDialog(mContext,barcodes.get(0),listener,listen2).show();
+//                            scanner.close();
 
-                                    Log.d("TAG", "onSuccess: " + barcode.getDisplayValue());
-                                    listener.finishScan();
-                                    break;
-                                case Barcode.FORMAT_UNKNOWN:
-                                    Log.d("TAG", ":FORMAT_UNKNOWN ");break;
-                            }
+                             analysisUseCase.clearAnalyzer();
+
                         }
-                    }
+                        }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception exception) {
-//                        Toast.makeText(mContext.getApplicationContext(), exception.getMessage(),Toast.LENGTH_SHORT).show();
+
                         Log.d("TAG", "onSuccess: " + exception.getMessage());
                     }
                 }).addOnCompleteListener(new OnCompleteListener<List<Barcode>>() {
              @Override
              public void onComplete(@NonNull Task<List<Barcode>> task) {
+
                  imageProxy.close();
              }
          });
-
-//        Log.d("TAG", "processImageProxy: "+exception.getMessage());
-
 
     }
 
@@ -250,4 +232,42 @@ public class ScanCameraFragment extends Fragment implements CameraFragmentNaviga
     }
 
 
+    @Override
+    public void continueProcess() {
+        if(scanner==null)
+        scanner = BarcodeScanning.getClient();
+if(cameraExecutor==null){
+    cameraExecutor = Executors.newSingleThreadExecutor();
+}
+        if (cameraProvider == null) {
+            return;
+        }
+        if (analysisUseCase != null) {
+            cameraProvider.unbind(analysisUseCase);
+
+
+        analysisUseCase = new ImageAnalysis.Builder()
+                .setTargetAspectRatio(AspectRatio.RATIO_4_3)
+                .setTargetRotation(previewView.getDisplay().getRotation())
+                .build();
+            try {
+                cameraProvider.bindToLifecycle(this, cameraSelector, analysisUseCase);
+            } catch (IllegalStateException illegalStateException) {
+                Log.e("TAG", illegalStateException.getMessage());
+            } catch (IllegalArgumentException illegalArgumentException) {
+                Log.e("TAG", illegalArgumentException.getMessage());
+            }
+        }
+
+        analysisUseCase.setAnalyzer(
+                cameraExecutor, new ImageAnalysis.Analyzer() {
+                    @Override
+                    public void analyze(@NonNull ImageProxy imageProxy) {
+
+                        processImageProxy(imageProxy);
+
+                    }
+                }
+        );
+    }
 }

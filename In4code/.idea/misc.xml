@@ -8,11 +8,17 @@
         <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/layout/activity_gallary_qrcode.xml" value="0.196875" />
         <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/layout/activity_scan.xml" value="0.15649867374005305" />
+        <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/layout/content_gen_code.xml" value="0.15572916666666667" />
+        <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/layout/dialog_confirm.xml" value="0.4" />
+        <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/layout/dialog_result_scan_qr.xml" value="0.264" />
         <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/layout/item_image_view.xml" value="0.2078125" />
+        <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/layout/layout_app_bar.xml" value="0.15572916666666667" />
         <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/layout/layout_camera_scanning.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/layout/layout_list_image_can.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/layout/layout_main.xml" value="0.1" />
+        <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/layout/layout_main.xml" value="0.2" />
+        <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/menu/activity_main_drawer.xml" value="0.15572916666666667" />
         <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/menu/main.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/tiem.nv164039/AndroidStudioProjects/In4code/app/src/main/res/menu/main_navigation.xml" value="0.15572916666666667" />
       </map>
     </option>
   </component>

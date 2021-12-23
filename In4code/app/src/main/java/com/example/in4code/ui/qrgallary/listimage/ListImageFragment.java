@@ -23,9 +23,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.example.in4code.databinding.ActivityGallaryQrcodeBinding;
 import com.example.in4code.databinding.LayoutListImageCanBinding;
 import com.example.in4code.repos.image.ImageQR;
+import com.example.in4code.ui.component.ResultQRDialog;
 import com.example.in4code.ui.recycleview.ImageRecycleAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.mlkit.vision.barcode.Barcode;
 import com.google.mlkit.vision.barcode.BarcodeScanner;
 import com.google.mlkit.vision.barcode.BarcodeScanning;
@@ -101,7 +104,7 @@ public void updateList(){
 }
     @Override
     public void onClick(int current) {
-     mCurrent = current;
+      mCurrent = current;
       adapter.setmCurrentChose(current);
       activityGallaryQrcodeBinding.imageScan.setVisibility(View.VISIBLE);
     }
@@ -116,42 +119,17 @@ public void updateList(){
     }
     @SuppressLint("UnsafeExperimentalUsageError")
     private void processImageProxy(InputImage inputImage) {
+
+         Barcode bar ;
         scanner = BarcodeScanning.getClient();
-//        @SuppressLint("UnsafeOptInUsageError") InputImage inputImage =
-//                InputImage.fromMediaImage(imageProxy.getImage(), imageProxy.getImageInfo().getRotationDegrees());
         Log.d("TAG", "Thread: "+Thread.currentThread().getId());
         scanner.process(inputImage)
                 .addOnSuccessListener(new OnSuccessListener<List<Barcode>>() {
                     @Override
                     public void onSuccess(@NonNull List<Barcode> barcodes) {
-//                        for (Barcode barcode : barcodes) {
-                        Barcode barcode =barcodes.get(0);
-                        Rect bounds = barcode.getBoundingBox();
-                        Point[] corners = barcode.getCornerPoints();
 
-                        String rawValue = barcode.getRawValue();
-
-                        int valueType = barcode.getValueType();
-                        // See API reference for complete list of supported types
-                        switch (valueType) {
-                            case Barcode.TYPE_WIFI:
-                                String ssid = barcode.getWifi().getSsid();
-                                String password = barcode.getWifi().getPassword();
-                                int type = barcode.getWifi().getEncryptionType();
-                                break;
-                            case Barcode.TYPE_URL:
-                                String title = barcode.getUrl().getTitle();
-                                String url = barcode.getUrl().getUrl();
-                                break;
-                            case Barcode.TYPE_TEXT:
-                                Toast.makeText(context.getApplicationContext(),barcode.getDisplayValue(),Toast.LENGTH_SHORT).show();
-                                Log.d("TAG", "Thread: "+Thread.currentThread().getId());
-                                Log.d("TAG", "onSuccess: " + barcode.getDisplayValue());
-
-                                break;
-                        }
                     }
-//                    }
+
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -159,7 +137,19 @@ public void updateList(){
 //                        Toast.makeText(mContext.getApplicationContext(), exception.getMessage(),Toast.LENGTH_SHORT).show();
                         Log.d("TAG", "onFailure: " + exception.getMessage());
                     }
-                });
+                }).addOnCompleteListener(new OnCompleteListener<List<Barcode>>() {
+            @Override
+            public void onComplete(@NonNull Task<List<Barcode>> task) {
+               List<Barcode> barcodes= task.getResult();
+               if(barcodes ==null|| barcodes.size()==0){
+                   Toast.makeText(context,"this image is not barcode ",Toast.LENGTH_SHORT).show();
+               }else{
+                   Barcode barcode =barcodes.get(0);
+                   new ResultQRDialog(context,barcode).show();
+                   scanner.close();
+               }
+            }
+        });
 
 
     }

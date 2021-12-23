@@ -12,14 +12,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.in4code.R;
+
 public class ConfirmDialog extends Dialog {
     private Context mContext;
-    private ConfirmListener mListener;
 
-    public ConfirmDialog(@NonNull Context context, String titleString, String messageString, ConfirmListener listener) {
+
+    public ConfirmDialog(@NonNull Context context, String titleString, String messageString) {
         super(context);
         mContext = context;
-        mListener = listener;
+
 
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -28,26 +30,15 @@ public class ConfirmDialog extends Dialog {
         int width = (int) (mContext.getResources().getDisplayMetrics().widthPixels * 0.9);
         getWindow().setLayout(width, ActionBar.LayoutParams.WRAP_CONTENT);
 
-        Button cancelBtn = findViewById(R.id.btn_no);
-        Button submitBtn = findViewById(R.id.btn_yes);
-        TextView title = findViewById(R.id.title);
-        TextView message = findViewById(R.id.question);
+//        Button cancelBtn = findViewById(R.id.btn_no);
+        Button submitBtn = findViewById(R.id.ok_dialog_image_scan);
+        TextView title = findViewById(R.id.title_text_gallary);
+        TextView message = findViewById(R.id.content_text_image_scan);
 
         title.setText(titleString);
         message.setText(messageString);
 
-        cancelBtn.setOnClickListener(v -> {
-            if (mListener != null) {
-                mListener.onCancel();
-            }
-            dismiss();
-        });
-        submitBtn.setOnClickListener(v -> {
-            if (mListener != null) {
-                mListener.onSubmit();
-            }
-            dismiss();
-        });
+
     }
 
     @Override
@@ -55,8 +46,5 @@ public class ConfirmDialog extends Dialog {
         super.onCreate(savedInstanceState);
     }
 
-    public interface ConfirmListener {
-        void onSubmit();
-        void onCancel();
-    }
+
 }

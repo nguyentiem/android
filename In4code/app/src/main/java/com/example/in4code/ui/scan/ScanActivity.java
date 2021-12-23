@@ -19,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.in4code.R;
 import com.example.in4code.databinding.ActivityScanBinding;
+import com.example.in4code.ui.qrgallary.GallaryQRCodeActivity;
 import com.example.in4code.ui.scan.camera.ScanCameraFragment;
 
 import java.util.ArrayList;
@@ -55,7 +56,7 @@ public class ScanActivity extends AppCompatActivity implements ScanActivityNavig
         listFrag.add(new ScanCameraFragment(this,this));
 
         getViewModel();
-    fragmentManager= getSupportFragmentManager();
+       fragmentManager= getSupportFragmentManager();
         binding.toolbarBackScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +66,8 @@ public class ScanActivity extends AppCompatActivity implements ScanActivityNavig
         binding.toolbarImageScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            Intent intent =new Intent(ScanActivity.this, GallaryQRCodeActivity.class);
+            startActivity(intent);
             }
         });
         goToScreen(0);

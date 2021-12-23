@@ -39,7 +39,7 @@
     <color name="redTotally">#AF0E26</color>
     <color name="redLight">#F44336</color>
     <color name="transparent">#00000000</color>
-    <color name="blue">#3072DF</color>
+    <color name="blue">#4CAF50</color>
     <color name="blue_light">#187C79</color>
     <color name="violet">#804CE4</color>
     <color name="pink">#ED84C9</color>
@@ -137,7 +137,7 @@
     <color name="split_bg_item">#F45656</color>
     <color name="split_by_page_bg_item">#F4F4F4</color>
     <color name="split_by_page_bg_item_number">#4022215B</color>
-    <color name="split_by_page_bg_item_border">#567DF4</color>
+    <color name="split_by_page_bg_item_border">#2359FD</color>
     <color name="border_button_dialog">#E4E4EB</color>
     <color name="split_item_bg">#FFF5F5</color>
     <color name="image_selected_border_color">#567DF4</color>
