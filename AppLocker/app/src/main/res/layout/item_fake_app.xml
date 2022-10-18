@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewState"
+            type="khoa.nv.applocker.ui.fakeapps.FakeAppItemViewState" />
+
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16dp"
+        app:cardCornerRadius="@dimen/margin_16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:padding="@dimen/margin_16dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/app_icon"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@{viewState.getIconDrawable(context)}"
+                tools:src="@drawable/ic_calculator" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:maxLines="1"
+                android:text="@{viewState.appName}"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/app_icon"
+                app:layout_constraintStart_toStartOf="@id/app_icon"
+                app:layout_constraintTop_toBottomOf="@id/app_icon"
+                tools:text="Calculator" />
+
+            <View
+                android:id="@+id/separator"
+                android:layout_width="match_parent"
+                android:layout_height="0.4dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:background="@color/colorTextGrayLightAlpha"
+                app:layout_constraintTop_toBottomOf="@id/app_name" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon_notification"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/separator"
+                android:src="@{viewState.getIconDrawable(context)}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_8dp"
+                android:text="@{viewState.appName + `   10:00 AM`}"
+                android:textColor="@color/colorTextGrayLight"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/icon_notification"
+                app:layout_constraintTop_toTopOf="@id/icon_notification"
+                tools:text="Calculator   10:00 AM" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@{viewState.content}"
+                app:layout_constraintStart_toStartOf="@id/title"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                tools:text="Calculator is running" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/oval_white"
+                android:visibility="@{viewState.isCheckedVisible()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_round_check_green_24px" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

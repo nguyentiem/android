@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewState"
+            type="khoa.nv.applocker.ui.main.lockedapps.AppLockItemViewState" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:padding="8dp"
+        android:focusable="true"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewAppIcon"
+            android:layout_width="@dimen/size_app_icon"
+            android:layout_height="@dimen/size_app_icon"
+            android:layout_marginEnd="16dp"
+            android:layout_centerVertical="true"
+            android:src="@{viewState.appIcon}" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/imageViewLock"
+            android:layout_toEndOf="@+id/imageViewAppIcon"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/margin_16dp"
+            android:paddingBottom="@dimen/margin_16dp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/avenir_medium"
+                android:singleLine="true"
+                android:text="@{viewState.appName}"
+                android:textColor="@color/colorTextGray"
+                android:textSize="@dimen/text_size_regular" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_4dp"
+                android:fontFamily="@font/avenir_medium"
+                android:singleLine="true"
+                android:text="@string/app_security_description"
+                android:textColor="@color/colorTextGrayLight"
+                android:textSize="@dimen/text_size_small" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageViewLock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/margin_16dp"
+            android:src="@{viewState.getLockIcon(context)}" />
+
+    </RelativeLayout>
+
+</layout>

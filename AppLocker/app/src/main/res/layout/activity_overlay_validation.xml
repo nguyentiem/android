@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="khoa.nv.applocker.ui.overlay.activity.OverlayValidationViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient_main"
+        tools:context=".ui.overlay.activity.OverlayValidationActivity">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/avatarLock"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="56dp"
+            app:layout_constraintBottom_toTopOf="@id/textViewPrompt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_round_lock_24px" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="72dp"
+            android:padding="@dimen/margin_16dp"
+            android:visibility="@{viewModel.getFingerPrintIconVisibility(viewModel.isFingerPrintMode)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_round_fingerprint_24px" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_32dp"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:layout_marginRight="@dimen/margin_32dp"
+            android:layout_marginBottom="@dimen/margin_16dp"
+            android:fontFamily="@font/avenir_medium"
+            android:gravity="center"
+            android:text="@{viewModel.getPromptMessage(context, viewModel.overlayValidateType)}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_medium"
+            app:layout_constraintBottom_toTopOf="@id/patternLockView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.andrognito.patternlockview.PatternLockView
+            android:id="@+id/patternLockView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="@dimen/margin_32dp"
+            app:aspectRatio="square"
+            app:dotNormalSize="16dp"
+            app:dotSelectedSize="24dp"
+            app:inStealthMode="@{viewModel.isHiddenDrawingMode}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:pathWidth="6dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+

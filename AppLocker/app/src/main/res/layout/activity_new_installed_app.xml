@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        tools:context=".ui.overlay.activity.NewInstalledAppActivity"
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="@dimen/margin_16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:id="@+id/view"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@android:color/holo_orange_dark" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon_app"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view"
+                tools:src="@tools:sample/avatars" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:fontFamily="@font/avenir_bold"
+                tools:text="@string/dialog_title_rate_us"
+                android:textColor="@color/colorDialogTitle"
+                android:textSize="@dimen/text_size_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/icon_app" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_32dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:layout_marginEnd="@dimen/margin_32dp"
+                android:fontFamily="@font/avenir_regular"
+                android:gravity="center"
+                android:text="@string/dialog_description_rate_us"
+                android:textColor="@color/colorDialogTitle"
+                android:textSize="@dimen/text_size_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/buttonLater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/avenir_regular"
+                android:gravity="center"
+                android:onClick="onLaterButtonClicked"
+                android:paddingLeft="@dimen/margin_32dp"
+                android:paddingTop="@dimen/margin_16dp"
+                android:paddingRight="@dimen/margin_32dp"
+                android:paddingBottom="@dimen/margin_16dp"
+                android:text="@string/dialog_action_rate_us_later"
+                android:textAllCaps="false"
+                android:textColor="@color/colorTextGray"
+                android:textSize="@dimen/text_size_regular"
+                app:layout_constraintEnd_toStartOf="@id/buttonLock"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/buttonLock" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonLock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/avenir_bold"
+                android:gravity="center"
+                android:paddingLeft="@dimen/margin_32dp"
+                android:onClick="onLockButtonClicked"
+                android:paddingTop="@dimen/margin_16dp"
+                android:paddingRight="@dimen/margin_32dp"
+                android:paddingBottom="@dimen/margin_16dp"
+                android:text="Lock"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_size_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/buttonLater"
+                app:layout_constraintTop_toBottomOf="@+id/description" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
