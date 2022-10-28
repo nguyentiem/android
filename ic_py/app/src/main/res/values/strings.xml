@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Home</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mật khẩu</string>
+    <string name="action_login">Đăng nhập</string>
+    <string name="action_sign_in">Đăng kí tài khoản</string>
+    <string name="action_sign_in_short">Đăng kí</string>
+    <string name="welcome">"Chào mừng !"</string>
+    <string name="invalid_username">tên nhập không hợp lệ</string>
+    <string name="invalid_password">Mật khẩu phải >5 kí tự</string>
+    <string name="login_failed">"Đăng nhập lỗi"</string>
+    <string name="text_forget_pass">Quên mật khẩu</string>
+    <string name="title_add">Thêm</string>
+</resources>

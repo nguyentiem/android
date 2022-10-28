@@ -1,0 +1,30 @@
+package com.example.home.data;
+
+public enum DeviceType {
+    LIGHT,
+    TV,
+    LAMP,
+    INTERUPTOR,
+    AIR_CONDITIONER,
+    AIR_PURIFIER,
+    WATER_HEATER,
+    FRIDGE,
+    CEILING_FAN,
+    FAN,
+    DOOR,
+    WINDOW,
+    CURTAIN,
+    WINDOW_BLIND,
+    SPEAKER,
+    CLOTHES_DRYER,
+    DEHUMIDIFIER,
+    HUMIDIFIER,
+    DISHWASHER,
+    DOMESTIC_ROBOT,
+    HEATER,
+    KITCHEN_HOOD,
+    MICROWAVE,
+    RICE_COOKER,
+    JUICER,
+    COFFER_MAKER
+}
