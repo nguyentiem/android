@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">record_wav</string>
+    <string name="app_name">autolatety</string>
+    <string name="dialog_delete">Delete</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="stop">Stop</string>
+    <string name="back">Back</string>
+    <string name="resume">Resume</string>
+    <string name="restart">Restart</string>
+    <string name="pause">Pause</string>
+    <string name="hi_bixby_line"><u>%s</u> : %s</string>
+    <string name="synchonous">Synchronous</string>
 </resources>
