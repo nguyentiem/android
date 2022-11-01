@@ -1,0 +1,24 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.AutoLatencyTools" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/bixby</item>
+        <item name="colorPrimaryVariant">@color/bixby_second</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="SeekbarTheme" parent="Widget.AppCompat.SeekBar">
+        <item name="colorControlNormal">#A8A4A4</item>
+    </style>
+
+    <style name="SwitchCompat" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="colorSwitchThumbNormal">#A8A4A4</item>
+    </style>
+</resources>

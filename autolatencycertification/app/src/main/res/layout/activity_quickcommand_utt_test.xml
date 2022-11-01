@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="tools.certification.latency.auto.R" />
+        <variable
+            name="viewModel"
+            type="tools.certification.latency.auto.ui.main.viewmodel.LatencyTestViewModel" />
+
+        <variable
+            name="adapter"
+            type="tools.certification.latency.auto.ui.main.view.LatencyTestAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.main.view.LatencyTestActivity">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="Quickcommand Test"
+            app:titleTextColor="@color/black" />
+
+
+<!--        android:visibility="gone"-->
+        <TextView
+            android:id="@+id/hi_bixby"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:layout_marginStart="16dp"
+            android:paddingVertical="8dp"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:textColor="#252525"
+            app:drawableStart="@{R.drawable.ic_speaker}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            />
+
+            <TextView
+                android:id="@+id/ting"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:drawablePadding="8dp"
+                android:paddingVertical="8dp"
+                android:textColor="#252525"
+                android:visibility="gone"
+                app:drawableStart="@{R.drawable.ic_bixby}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hi_bixby" />
+
+            <TextView
+                android:id="@+id/quickcommand"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:drawablePadding="8dp"
+                android:paddingVertical="8dp"
+                android:textColor="#252525"
+                android:visibility="gone"
+                app:drawableStart="@{R.drawable.ic_timer}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ting" />
+
+            <TextView
+                android:id="@+id/first_response"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:drawablePadding="8dp"
+                android:paddingVertical="8dp"
+                android:textColor="#252525"
+                android:visibility="gone"
+                app:drawableStart="@{R.drawable.ic_speaker}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/quickcommand" />
+
+            <TextView
+                android:id="@+id/second_response"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:drawablePadding="8dp"
+                android:paddingVertical="8dp"
+                android:textColor="#252525"
+                android:visibility="gone"
+                app:drawableStart="@{R.drawable.ic_bixby}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/first_response" />
+
+            <TextView
+                android:id="@+id/third_response"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:drawablePadding="8dp"
+                android:paddingVertical="8dp"
+                android:textColor="#252525"
+                android:visibility="gone"
+                app:drawableStart="@{R.drawable.ic_timer}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/second_response" />
+
+
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#aaa"
+            app:layout_constraintBottom_toTopOf="@id/qc_test_result"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/qc_test_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="4dp"
+            android:text="Test Result: "
+            android:textColor="#1e90ff"
+            app:layout_constraintBottom_toTopOf="@id/qc_latency"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/qc_latency"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:text="First response latency: "
+            android:textColor="#1e90ff"
+
+            app:layout_constraintBottom_toTopOf="@+id/qc_accuracy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <TextView
+            android:id="@+id/qc_accuracy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginBottom="4dp"
+            android:text="Accuracy: "
+            android:textColor="#1e90ff"
+            app:layout_constraintBottom_toTopOf="@id/qc_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingBottom="10dp"
+            />
+
+        <Button
+            android:id="@+id/qc_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -206,7 +206,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 switch (loginViewModel.getStatusLayout().getValue()) {
                     case StatusMode.LOGIN:
-                        finish();
+//                        finish();
                         break;
                     case StatusMode.SIGNIN:
                         loginViewModel.changeMode(StatusMode.LOGIN);

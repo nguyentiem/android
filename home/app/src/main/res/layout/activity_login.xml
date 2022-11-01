@@ -37,6 +37,7 @@
                     android:layout_height="30dp"
                     android:id="@+id/back_toolbar"
                     android:layout_gravity="center"
+                    android:stateListAnimator="@animator/button_animation"
                     android:src="@drawable/ic_back" />
 
                 <TextView

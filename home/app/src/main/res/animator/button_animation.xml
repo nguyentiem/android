@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    click scale animation -->
+<!--  de animation co tac thi no phai huong toi dich trajng thai base la dich  -->
+    <item
+        android:state_enabled="true"
+        android:state_pressed="true">
+        <set>
+            <!--            xoay -->
+            <objectAnimator
+                android:duration="@integer/duration_animation"
+                android:propertyName="rotation"
+                android:valueFrom="-360"
+                android:valueTo="0" />
+            <objectAnimator
+                android:duration="@integer/duration_animation"
+                android:propertyName="scaleX"
+                android:valueTo="1.0"
+                android:valueFrom="0.2"
+                android:valueType="floatType" />
+            <objectAnimator
+                android:duration="@integer/duration_animation"
+                android:propertyName="scaleY"
+                android:valueTo="1.0"
+                android:valueFrom="0.2"
+                android:valueType="floatType" />
+        </set>
+    </item>
+
+    <!-- base state trajng thai nay item phai khong duoc cu dong (gia tri dich) -->
+    <item android:state_enabled="true">
+        <set>
+            <!--                android:startOffset="@integer/delay_animation"-->
+            <objectAnimator
+                android:propertyName="scaleX"
+                android:valueTo="1"
+                android:valueType="floatType" />
+
+            <objectAnimator
+                android:propertyName="scaleY"
+                android:valueTo="1"
+                android:valueType="floatType" />
+
+            <objectAnimator
+                android:propertyName="rotation"
+                android:valueTo="0" />
+
+        </set>
+    </item>
+    <!--    trang thai mac dinh-->
+    <item>
+        <set>
+            <objectAnimator
+                android:propertyName="scaleX"
+                android:valueTo="1"
+                android:valueType="floatType" />
+            <objectAnimator
+                android:propertyName="scaleY"
+                android:valueTo="1"
+                android:valueType="floatType" />
+
+        </set>
+    </item>
+</selector>

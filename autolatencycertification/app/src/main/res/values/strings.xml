@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Auto Latency Certification Tools</string>
+    <string name="selected_utterance">Selected utterance</string>
+    <string name="menu_utterance">Menu utterance</string>
+    <string name="repeat">Repeat</string>
+    <string name="time">Time</string>
+    <string name="sub">-</string>
+    <string name="add">+</string>
+    <string name="volume">Volume</string>
+    <string name="to">to</string>
+    <string name="reset">Reset</string>
+    <string name="stop">Stop</string>
+    <string name="test">Test</string>
+    <string name="play">Play</string>
+</resources>

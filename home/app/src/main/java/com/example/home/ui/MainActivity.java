@@ -4,24 +4,25 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.example.home.R;
+import com.example.home.ui.animation.MyBounceInterpolator;
 import com.example.home.ui.dashboard.DashboardFragment;
-import com.example.home.ui.dashboard.DashboardViewModel;
 import com.example.home.ui.home.HomeFragment;
 import com.example.home.ui.notifications.NotificationsFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+
 
 import com.example.home.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -39,21 +40,19 @@ public class MainActivity extends AppCompatActivity {
 
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-//        switch (item.getItemId()) {
-//            case R.id.action_settings:
-//                // User chose the "Settings" item, show the app settings UI...
-//                Toast.makeText(getApplicationContext(), "환경설정 버튼 클릭됨", Toast.LENGTH_LONG).show();
-//                return true;
-//
-//            default:
-//                // If we got here, the user's action was not recognized.
-//                // Invoke the superclass to handle it.
-//                Toast.makeText(getApplicationContext(), "나머지 버튼 클릭됨", Toast.LENGTH_LONG).show();
-//                return super.onOptionsItemSelected(item);
-//
-//        }
+//        return super.onOptionsItemSelected(item);
+        switch (item.getItemId()) {
+            case R.id.menu_add:
+
+                return true;
+            case R.id.menu_del:
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
+
     Fragment[] fragments = new Fragment[3];
     MainViewModel model;
     FragmentManager fragmentManager ;
@@ -75,6 +74,38 @@ public class MainActivity extends AppCompatActivity {
         fragments[2] = new NotificationsFragment(model);
         fragmentManager = getSupportFragmentManager();
         switchFragment(0);
+        binding.navView.setSelectedItemId(R.id.navigation_home);
+
+        binding.toolbarBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                gan them ham giao dong cho animation
+                final Animation myAnim = AnimationUtils.loadAnimation(MainActivity.this, R.anim.bounce);
+                // Use bounce interpolator with amplitude 0.2 and frequency 20
+                MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+                myAnim.setInterpolator(interpolator);
+                binding.toolbarBack.startAnimation(myAnim);
+            }
+        });
+        binding.navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case  R.id.navigation_dashboard:
+                        switchFragment(1);
+                        return true;
+                    case R.id.navigation_home:
+                        switchFragment(0);
+                        return true ;
+                    case R.id.navigation_notifications:
+                        switchFragment(2);
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
+
     }
 
     public void switchFragment(int i){
